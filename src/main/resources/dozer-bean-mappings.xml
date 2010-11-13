@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns="http://dozer.sourceforge.net" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://dozer.sourceforge.net
+          http://dozer.sourceforge.net/schema/beanmapping.xsd">
+
+	<configuration>
+		<stop-on-errors>true</stop-on-errors>
+		<date-format>dd/MM/yyyy HH:mm</date-format>
+		<wildcard>true</wildcard>
+	</configuration>
+
+	<mapping>
+		<class-a>com.blogspot.dboissin.simplegallery.server.model.Comment
+		</class-a>
+		<class-b>com.blogspot.dboissin.simplegallery.shared.dto.CommentDTO
+		</class-b>
+		<field>
+			<a>id</a>
+			<b>id</b>
+		</field>
+		<field>
+			<a>commentDate</a>
+			<b>commentDate</b>
+		</field>
+		<field>
+			<a>comment</a>
+			<b>comment</b>
+		</field>
+	</mapping>
+
+	<mapping>
+		<class-a>com.blogspot.dboissin.simplegallery.server.model.Photo
+		</class-a>
+		<class-b>com.blogspot.dboissin.simplegallery.shared.dto.PhotoDTO
+		</class-b>
+		<field>
+			<a>id</a>
+			<b>id</b>
+		</field>
+		<field>
+			<a>photoname</a>
+			<b>photoname</b>
+		</field>
+		<field>
+			<a>filename</a>
+			<b>filename</b>
+		</field>
+		<field>
+			<a>description</a>
+			<b>description</b>
+		</field>
+		<field>
+			<a>photodate</a>
+			<b>photodate</b>
+		</field>
+		<field>
+			<a>comments</a>
+			<b>comments</b>
+		</field>
+	</mapping>
+
+	<mapping>
+		<class-a>com.blogspot.dboissin.simplegallery.server.model.Gallery
+		</class-a>
+		<class-b>com.blogspot.dboissin.simplegallery.shared.dto.GalleryDTO
+		</class-b>
+		<field>
+			<a>id</a>
+			<b>id</b>
+		</field>
+		<field>
+			<a>title</a>
+			<b>title</b>
+		</field>
+		<field>
+			<a>description</a>
+			<b>description</b>
+		</field>
+	</mapping>
+</mappings>
