@@ -11,12 +11,12 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.annotations.Test;
 
+import com.blogspot.dboissin.simplegallery.dto.CommentDTO;
+import com.blogspot.dboissin.simplegallery.dto.GalleryDTO;
+import com.blogspot.dboissin.simplegallery.dto.PhotoDTO;
 import com.blogspot.dboissin.simplegallery.server.model.Comment;
 import com.blogspot.dboissin.simplegallery.server.model.Gallery;
 import com.blogspot.dboissin.simplegallery.server.model.Photo;
-import com.blogspot.dboissin.simplegallery.shared.dto.CommentDTO;
-import com.blogspot.dboissin.simplegallery.shared.dto.GalleryDTO;
-import com.blogspot.dboissin.simplegallery.shared.dto.PhotoDTO;
 
 @ContextConfiguration(locations={"file:src/main/webapp/WEB-INF/applicationContext.xml"})
 public class TestSimpleGalleryService extends AbstractTestNGSpringContextTests {

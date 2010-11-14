@@ -1,9 +1,12 @@
-package com.blogspot.dboissin.simplegallery.shared.dto;
+package com.blogspot.dboissin.simplegallery.dto;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
-public class PhotoDTO {
+public class PhotoDTO implements Serializable {
+
+	private static final long serialVersionUID = 6863505676889356897L;
 
 	private Long id;
 	

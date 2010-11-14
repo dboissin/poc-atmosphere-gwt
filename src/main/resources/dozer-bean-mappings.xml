@@ -12,7 +12,7 @@
 	<mapping>
 		<class-a>com.blogspot.dboissin.simplegallery.server.model.Comment
 		</class-a>
-		<class-b>com.blogspot.dboissin.simplegallery.shared.dto.CommentDTO
+		<class-b>com.blogspot.dboissin.simplegallery.dto.CommentDTO
 		</class-b>
 		<field>
 			<a>id</a>
@@ -31,7 +31,7 @@
 	<mapping>
 		<class-a>com.blogspot.dboissin.simplegallery.server.model.Photo
 		</class-a>
-		<class-b>com.blogspot.dboissin.simplegallery.shared.dto.PhotoDTO
+		<class-b>com.blogspot.dboissin.simplegallery.dto.PhotoDTO
 		</class-b>
 		<field>
 			<a>id</a>
@@ -62,7 +62,7 @@
 	<mapping>
 		<class-a>com.blogspot.dboissin.simplegallery.server.model.Gallery
 		</class-a>
-		<class-b>com.blogspot.dboissin.simplegallery.shared.dto.GalleryDTO
+		<class-b>com.blogspot.dboissin.simplegallery.dto.GalleryDTO
 		</class-b>
 		<field>
 			<a>id</a>

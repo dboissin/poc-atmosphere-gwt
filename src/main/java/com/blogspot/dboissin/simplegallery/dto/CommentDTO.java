@@ -1,17 +1,11 @@
-package com.blogspot.dboissin.simplegallery.shared.dto;
+package com.blogspot.dboissin.simplegallery.dto;
 
+import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+public class CommentDTO implements Serializable {
 
-public class CommentDTO {
+	private static final long serialVersionUID = 32631491832308331L;
 
 	private Long id;
 	
