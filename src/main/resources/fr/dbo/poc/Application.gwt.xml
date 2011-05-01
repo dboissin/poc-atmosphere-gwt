@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+
+	<inherits name='com.google.gwt.user.User' />
+	<inherits name='com.google.gwt.user.theme.standard.Standard' />
+	<inherits name="org.fusesource.restygwt.RestyGWT" />
+	<inherits name="org.atmosphere.gwt.Client" />
+	<inherits name="com.google.gwt.place.Place" />
+	<inherits name="com.google.gwt.activity.Activity" />
+	<inherits name="com.google.gwt.inject.Inject" />
+
+
+	<entry-point class='fr.dbo.poc.client.Application' />
+
+
+	<source path='client' />
+	<source path='shared' />
+
+</module>

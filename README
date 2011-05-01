@@ -1,2 +1,2 @@
-Ce projet a été créé dans le cadre d'un tutorial présentant certaines fonctionnalités de GWT2.1.
-Son utilité ne réside donc pas dans les fonctionnalités finales. Mais, dans l'exemple d'implémentation des nouvelles fonctionnalités apportées par GWT2.1 (e.g. MVP).
+Poc pour tester l'intégration d'Atmosphere framework avec GWT, Jersey et RestyGWT.
+

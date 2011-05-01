@@ -1,0 +1,45 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+ xmlns:g="urn:import:com.google.gwt.user.client.ui">
+  <ui:image field="maincontent"/>
+  <ui:image field="side"/>
+  <ui:image field="mainmenu"/>
+ <ui:style>
+  @sprite .menuPanel {
+   gwt-image: 'mainmenu';
+   background-position: center center;
+   height: 100%;
+   width: 100%;
+   border: 1px solid gray;
+  }
+
+  @sprite .sidePanel {
+   gwt-image: 'side';
+   background-position: center center;
+   height: 100%;
+   width: 100%;
+   border: 1px solid gray;
+  }
+
+  @sprite .screenPanel {
+   gwt-image: 'maincontent';
+   background-position: center center;
+   height: 100%;
+   width: 100%;
+   border: 1px solid gray;
+  }
+ </ui:style>
+
+ <g:LayoutPanel>
+  <g:layer>
+   <g:SimplePanel ui:field="menuPanel" addStyleNames="{style.menuPanel}" />
+  </g:layer>
+  <g:layer>
+   <g:SimplePanel ui:field="sidePanel" addStyleNames="{style.sidePanel}" />
+  </g:layer>
+  <g:layer>
+   <g:SimplePanel ui:field="screenPanel" addStyleNames="{style.screenPanel}" />
+  </g:layer>
+ </g:LayoutPanel>
+
+</ui:UiBinder>
