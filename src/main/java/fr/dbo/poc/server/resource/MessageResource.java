@@ -1,7 +1,6 @@
 package fr.dbo.poc.server.resource;
 
 
-import javax.inject.Singleton;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -25,17 +24,17 @@ import fr.dbo.poc.shared.dto.OtherDTO;
 import fr.dbo.poc.shared.dto.SimpleDTO;
 
 @Path("/topic")
-@Singleton
-@Produces("application/json")
+@Produces(MediaType.APPLICATION_JSON)
 public class MessageResource {
 
     private static final Logger logger = LoggerFactory.getLogger(MessageResource.class);
 
     @InjectParam("noobService")
+    //@Inject
     private NoobService noobService;
 
     @GET
-    @Path("{name}")
+    @Path("listen/{name}")
     @Suspend(outputComments = false, resumeOnBroadcast = false, listeners = EventsLogger.class)
     public Broadcastable listen(@PathParam("name") String topic) {
         Broadcaster broadcaster = BroadcasterFactory.getDefault().lookup(PocBroadcaster.class, topic, true);
@@ -73,6 +72,15 @@ public class MessageResource {
         }
         return new Broadcastable(new SimpleDTO(message.getOtherInteger() +
                 " " + message.getOtherString()), "", broadcaster);
+    }
+    
+    @GET
+    @Path("blop/{name}")
+    public SimpleDTO blop(@PathParam("name") String topic) {
+        if (noobService == null) {
+            throw new AssertionError();
+        }
+       return new SimpleDTO("Connected !");
     }
 
     public NoobService getNoobService() {

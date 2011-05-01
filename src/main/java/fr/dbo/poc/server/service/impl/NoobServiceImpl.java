@@ -12,13 +12,9 @@ import fr.dbo.poc.server.service.NoobService;
 import fr.dbo.poc.shared.dto.OtherDTO;
 import fr.dbo.poc.shared.dto.SomeDTO;
 
-/**
- * @author Mathieu Carbou
- * @since 0.7
- */
 
 @Named("noobService")
-final class NoobServiceImpl implements NoobService {
+public class NoobServiceImpl implements NoobService {
 
      private final Logger logger = LoggerFactory.getLogger(NoobServiceImpl.class);
 
