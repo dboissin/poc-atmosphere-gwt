@@ -1,11 +1,13 @@
 package fr.dbo.poc.client.ui.impl;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.KeyCodes;
+import com.google.gwt.event.dom.client.KeyPressEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.HTML;
+import com.google.gwt.user.client.ui.TabPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
@@ -25,8 +27,7 @@ public class ChatViewImpl implements ChatView {
 
     @UiField
     HTML res;
-    @UiField
-    TextBox msg;
+    TabPanel tb;
 
     public ChatViewImpl() {
         panel = uiBinder.createAndBindUi(this);
@@ -43,9 +44,12 @@ public class ChatViewImpl implements ChatView {
     }
 
     @UiHandler("sendMessage")
-    protected void doSend(ClickEvent event) {
-        presenter.sendMessage(msg.getText());
-        msg.setText("");
+    protected void doSend(KeyPressEvent event) {
+        if (event.getCharCode() == KeyCodes.KEY_ENTER) {
+            TextBox msg = (TextBox) event.getSource();
+            presenter.sendMessage(msg.getText());
+            msg.setText("");
+        }
     }
 
     @Override

@@ -1,12 +1,14 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
- xmlns:g="urn:import:com.google.gwt.user.client.ui">
- <ui:style>
-
+    xmlns:g="urn:import:com.google.gwt.user.client.ui">
+    <ui:style>
+        @sprite .sendMessage {
+            width: 100%;
+        }
  </ui:style>
-<g:VerticalPanel>
-    <g:HTML ui:field="res"></g:HTML>
-    <g:TextBox ui:field="msg"></g:TextBox>
-    <g:Button ui:field="sendMessage"></g:Button>
-</g:VerticalPanel>
+    <g:VerticalPanel>
+        <g:HTML ui:field="res"></g:HTML>
+        <g:TextBox ui:field="sendMessage" addStyleNames="{style.sendMessage}"></g:TextBox>
+        <!-- <g:Button ui:field="sendMessage"></g:Button> -->
+    </g:VerticalPanel>
 </ui:UiBinder>

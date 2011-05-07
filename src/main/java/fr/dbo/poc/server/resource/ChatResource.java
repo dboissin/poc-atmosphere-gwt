@@ -1,6 +1,7 @@
 package fr.dbo.poc.server.resource;
 
 import javax.inject.Singleton;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -30,15 +31,6 @@ public class ChatResource {
     
     private static final Logger logger = LoggerFactory.getLogger(ChatResource.class);
     
-//    @GET
-//    @Path("{name}")
-//    @Suspend(outputComments = false, resumeOnBroadcast = false, listeners = EventsLogger.class)
-//    public Broadcastable listen(@Context PocBroadcaster broadcaster, @PathParam("name") String name) {
-//        broadcaster.setID(name);
-//        logger.info("thread: {} LISTENING to '{}'", Thread.currentThread().getName(), broadcaster.getID());
-//        return new Broadcastable(new SimpleDTO("Connected !"), broadcaster);
-//    }
-    
     @GET
     @Path("{user}")
     @Suspend(outputComments = false, resumeOnBroadcast = false, listeners = EventsLogger.class)
@@ -62,6 +54,7 @@ public class ChatResource {
     }
 
     @POST
+    @Consumes(MediaType.APPLICATION_JSON)
     @Broadcast
     public Broadcastable publish(MessageDTO message) {
         Broadcaster broadcaster = BroadcasterFactory.getDefault().lookup(PocBroadcaster.class, message.getRoom());
