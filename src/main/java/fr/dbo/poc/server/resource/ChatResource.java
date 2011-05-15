@@ -1,5 +1,7 @@
 package fr.dbo.poc.server.resource;
 
+import java.io.IOException;
+
 import javax.inject.Singleton;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -17,11 +19,15 @@ import org.atmosphere.cpr.AtmosphereResource;
 import org.atmosphere.cpr.Broadcaster;
 import org.atmosphere.cpr.BroadcasterFactory;
 import org.atmosphere.jersey.Broadcastable;
+import org.codehaus.jackson.JsonGenerationException;
+import org.codehaus.jackson.map.JsonMappingException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import fr.dbo.poc.server.util.PocBroadcastable;
 import fr.dbo.poc.server.util.PocBroadcaster;
 import fr.dbo.poc.shared.dto.MessageDTO;
+import fr.dbo.poc.shared.dto.RoomInfosDTO;
 import fr.dbo.poc.shared.dto.SimpleDTO;
 
 @Path("/chat")
@@ -43,14 +49,20 @@ public class ChatResource {
     @PUT
     @Path("{room}/{user}")
     @Broadcast
-    public Broadcastable subscribe(@PathParam("room") String room, @PathParam("user") String user) {
+    public Broadcastable subscribe(@PathParam("room") String room, @PathParam("user") String user) throws JsonGenerationException, JsonMappingException, IOException {
         Broadcaster broadcaster = BroadcasterFactory.getDefault().lookup(PocBroadcaster.class, room, true);
         Broadcaster userBroadcaster = BroadcasterFactory.getDefault().lookup(PocBroadcaster.class, user);
         if (userBroadcaster == null || broadcaster == null) {
             return null; //new Broadcastable(new SimpleDTO("Room doesn't exist."), userBroadcaster);
         }
+        int nbResources = userBroadcaster.getAtmosphereResources().size();
+        logger.debug("Nb attached resource to userBroadcaster : {}", nbResources);
+        if (nbResources < 1) {
+            return null; // TODO throw exception
+        }
         broadcaster.addAtmosphereResource((AtmosphereResource<?, ?>) userBroadcaster.getAtmosphereResources().toArray()[0]);
-        return new Broadcastable(new SimpleDTO(user + " has joined " + room), broadcaster);
+        return new PocBroadcastable(new MessageDTO(null, user + " joined " + room + ".", room),
+                new RoomInfosDTO(room, broadcaster.getAtmosphereResources().size()), broadcaster);
     }
 
     @POST
@@ -61,7 +73,7 @@ public class ChatResource {
         if (broadcaster == null) {
             return null; 
         }
-        return new Broadcastable(message, broadcaster);
+        return new Broadcastable(message, "", broadcaster);
     }
     
     @DELETE
@@ -78,6 +90,6 @@ public class ChatResource {
             BroadcasterFactory.getDefault().remove(broadcaster, room);
             return null;
         }
-        return new Broadcastable(new SimpleDTO(userBroadcaster.getID() + " has leaved " + room), broadcaster);
+        return new Broadcastable(new SimpleDTO(userBroadcaster.getID() + " has leaved " + room), "", broadcaster);
     }
 }

@@ -1,7 +1,10 @@
 package fr.dbo.poc.shared.dto;
 
-public class MessageDTO {
-    
+import java.io.Serializable;
+
+public class MessageDTO implements Serializable {
+
+    private static final long serialVersionUID = 6437046876454534651L;
     private String user;
     private String message;
     private String room;

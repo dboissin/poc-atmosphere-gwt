@@ -2,7 +2,7 @@
   <atmosphere-handlers>
      <atmosphere-handler context-root="/gwtasync"
          class-name="fr.dbo.poc.server.util.GwtAtmosphereHandler">
-         <property name="heartbeat" value="20000"/>
+         <property name="heartbeat" value="300000"/>
      </atmosphere-handler>
      <atmosphere-handler context-root="/async/*"
           class-name="org.atmosphere.handler.ReflectorServletProcessor">
